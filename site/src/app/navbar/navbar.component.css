@@ -1,0 +1,43 @@
+*{
+    font-family:'Times New Roman', Times, serif;
+}
+.nav-container{
+    background-color: rgb(248, 188, 119);
+    width: 100%;
+    margin: 0px;
+    padding:0px;
+    border-radius: 10px;
+}
+.right-nav{
+    position: absolute;
+    display: flex;
+    flex-direction: grid;
+    top: 12px;
+    right: 30px;
+}
+.h1{
+  padding: 10px;
+    padding-bottom: 20px;
+    font-size: 64px;
+    margin-left:20px;
+    color: white;
+    text-decoration: none;
+}
+a{
+    font-size: 40px;
+    margin: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+.submit:hover{
+    color:pink;
+}
+.login{
+    margin-top: 10px;
+}
+.cart{
+    margin-top: 5px;
+}
+

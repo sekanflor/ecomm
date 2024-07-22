@@ -1,0 +1,69 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+  <app-navbar></app-navbar>
+  <div class="prod-container">
+    <div class="container">
+      <button (click)="toggleCart()"><i class="fa fa-shopping-cart" style="font-size:36px"></i></button>
+      <div *ngIf="showCart">
+        <div *ngIf="cart.length === 0">
+          <p>Your cart is empty.</p>
+        </div>
+        <div *ngIf="cart.length > 0" class="cart-list">
+          <div *ngFor="let cartItem of cart" class="cart-item">
+            <h3>{{ cartItem.item_name }}</h3>
+            <p>Price: Php{{ cartItem.item_price }}</p>
+            <section>
+              <label>Input qty.</label>
+              <input type="number" [(ngModel)]="cartItem.quantity" min="1" [max]="cartItem.item_quantity">
+              <p>Out of: {{ cartItem.item_quantity }}</p>
+            </section>
+            <button (click)="removeFromCart(cartItem)">Remove from Cart</button>
+          </div>
+        </div>
+        <button (click)="addToOrder()">Add to Order</button>
+      </div>
+      <h1 style="color: white;">Shop Items</h1>
+
+      <div class="price-filter">
+        <label for="priceRange">Filter by price:</label>
+        <select id="priceRange" [(ngModel)]="selectedPriceRange" (change)="filterItems()">
+          <option value="all">All</option>
+          <option value="below500">Below 500</option>
+          <option value="500to1000">500 to 1000</option>
+          <option value="above1000">Above 1000</option>
+        </select>
+      </div>
+
+      <div *ngIf="filteredItems.length === 0">
+        <p>Loading items...</p>
+      </div>
+      <div *ngIf="filteredItems.length > 0" class="item-list">
+        <div *ngFor="let item of filteredItems" class="item">
+          <img [src]="'assets/' + item.image_name" alt="{{ item.item_name }}" width="150" height="150">
+          <h2>{{ item.item_name }}</h2>
+          <p>{{ item.item_description }}</p>
+          <p>Available Quantity: {{ item.item_quantity }}</p>
+          <p>Price: Php{{ item.item_price }}</p>
+          <button (click)="addToCart(item)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showOrderSummary" class="order-summary">
+      <button class="close-btn" (click)="closeOrderSummary()" style="color: black;">X</button>
+      <h2>Order Summary</h2>
+      <div *ngFor="let summaryItem of orderSummary" class="order-item">
+        <h3>{{ summaryItem.item_name }}</h3>
+        <p>Price: Php{{ summaryItem.item_price }}</p>
+        <p>Quantity: {{ summaryItem.quantity }}</p>
+        <p>Total Price: Php{{ summaryItem.total_price }}</p>
+      </div>
+      <p>Total Amount: Php{{ getTotalAmount() }}</p>
+      <button (click)="cancelOrder()">Cancel Order</button>
+      <button (click)="payoutOrder()">Payout</button>
+    </div>
+  </div>
+</body>
