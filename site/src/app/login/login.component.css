@@ -74,8 +74,8 @@ body {
   -webkit-transition: all .4s;
 }
 
-.input-fields {
-}
+/* .input-fields {
+} */
 
 .input-fields.run-ani {
   animation: hiddeninput 1s forwards;
@@ -122,8 +122,8 @@ input.login-field[type="text"]::-webkit-input-placeholder, input.login-field[typ
   margin-bottom: 30px;
 }
 
-.submit-section {
-}
+/* .submit-section {
+} */
 
 .submit-section.run-ani {
   animation: hiddensubmit 1s forwards;

@@ -6,7 +6,10 @@
   <app-navbar></app-navbar>
   <div class="prod-container">
     <div class="container">
-      <button (click)="toggleCart()"><i class="fa fa-shopping-cart" style="font-size:36px"></i></button>
+      <div class="divider">
+        <h1 style="color: white;">Shop Items</h1>
+        <button (click)="toggleCart()"><i class="fa fa-shopping-cart" style="font-size:36px"></i></button>
+      </div>
       <div *ngIf="showCart">
         <div *ngIf="cart.length === 0">
           <p>Your cart is empty.</p>
@@ -25,7 +28,6 @@
         </div>
         <button (click)="addToOrder()">Add to Order</button>
       </div>
-      <h1 style="color: white;">Shop Items</h1>
 
       <div class="price-filter">
         <label for="priceRange">Filter by price:</label>
@@ -42,7 +44,9 @@
       </div>
       <div *ngIf="filteredItems.length > 0" class="item-list">
         <div *ngFor="let item of filteredItems" class="item">
-          <img [src]="'assets/' + item.image_name" alt="{{ item.item_name }}" width="150" height="150">
+          <div class="img-div">
+            <img [src]="'assets/' + item.image_name" alt="{{ item.item_name }}">
+          </div>
           <h2>{{ item.item_name }}</h2>
           <p>{{ item.item_description }}</p>
           <p>Available Quantity: {{ item.item_quantity }}</p>
