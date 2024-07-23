@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,14 +31,15 @@ export class LoginComponent {
         if (response.status.remarks === 'success') {
           this.router.navigate(['/homepage']);
         } else {
-          alert('There is an error, try again!');
+          console.log(response)
+          Swal.fire('Email or Password is Incorrect.');
         }
       },
       (error: any) => {
         if (error.status === 401) {
-          alert('Email or Password is Incorrect.');
+          Swal.fire('Email or Password is Incorrect.');
         } else {
-          alert('An unexpected error occurred. Please try again later.');
+          Swal.fire('An unexpected error occurred. Please try again later.');
         }
       }
     );

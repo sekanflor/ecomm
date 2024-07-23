@@ -8,7 +8,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ServiceService {
 
-  private baseURL = 'http://localhost/shopfyAPI/shopfyAPI/api';
+  private baseURL = 'http://localhost/ecomm_api/ecomm_api/shopfyAPI/api';
 
   constructor(private http: HttpClient) { }
 

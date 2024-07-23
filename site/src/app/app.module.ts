@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { CartPageComponent } from './homepage/component/cart-page/cart-page.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'homepage', component: HomepageComponent },
   { path: 'navbar', component: NavbarComponent },
-
+  { path: 'register', component: RegisterComponent }
 
 ];
 
@@ -27,6 +29,8 @@ const routes: Routes = [
     NavbarComponent,
     HomepageComponent,
     LoginComponent,
+    CartPageComponent,
+    RegisterComponent,
 
 
   ],
