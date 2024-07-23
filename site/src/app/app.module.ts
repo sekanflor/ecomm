@@ -12,6 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { CartPageComponent } from './homepage/component/cart-page/cart-page.component';
 import { RegisterComponent } from './register/register.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 const routes: Routes = [
@@ -42,7 +43,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
