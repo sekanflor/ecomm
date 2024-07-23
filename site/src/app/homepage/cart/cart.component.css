@@ -1,5 +1,5 @@
 * {
-  font-family: "Roboto", sans-serif;
+  font-family:'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,7 +38,7 @@ body {
 }
 
 .nav-container .left-nav a {
-  font-size: 24px; /* Larger font size for title */
+  font-size: 70px; /* Larger font size for title */
   font-weight: bold; /* Bold text for title */
 }
 
@@ -155,7 +155,7 @@ body {
 
 .content {
   margin: 1rem 0;
-  width: 90%;
+  width: 80%;
   max-width: 800px;
 }
 

@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   }
 
   retrieveOrders() {
-    this.http.get('http://localhost/shoppingAPI/ShopShopApi/api/order').subscribe(
+    this.http.get('http://localhost/shopfyAPI/shopfyAPI/api/order').subscribe(
       (resp: any) => {
         console.log(resp);
         this.orders = resp.data.map((order: any) => ({
@@ -48,7 +48,7 @@ export class CartComponent implements OnInit {
   payout(orderId: number, totalPrice: number) {
     const data = { orderId: orderId };
 
-    this.http.post(`http://localhost/shoppingAPI/ShopShopApi/api/pay_order`, data).subscribe(
+    this.http.post(`http://localhost/shopfyAPI/shopfy/api/pay_order`, data).subscribe(
       (response: any) => {
         console.log('Paid out:', response);
         this._snackBar.open('Wait for Order to Arrive :>', 'close', {
@@ -67,7 +67,7 @@ export class CartComponent implements OnInit {
   cancelAllOrder(orderId: number, totalPrice: number) {
     const data = { orderId: orderId };
 
-    this.http.post(`http://localhost/shoppingAPI/ShopShopApi/api/delete_order`, data).subscribe(
+    this.http.post(`http://localhost/shopfyAPI/shopfyAPI/api/delete_order`, data).subscribe(
       (response: any) => {
         console.log('Order cancelled successfully:', response);
         this._snackBar.open('Order has been Cancelled :>', 'close', {
