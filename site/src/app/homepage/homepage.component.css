@@ -144,3 +144,50 @@ button:hover {
   }
 
 }
+
+.nav-container{
+    background-color: rgb(248, 188, 119);
+    width: 100%;
+    padding: 1rem 0 1.5rem 0;
+    /* border-radius: 10px; */
+    box-shadow: 0px 4px 4px #00000040;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.right-nav{
+    /* position: absolute; */
+    /* top: 12px; */
+    /* right: 30px; */
+    /* flex-direction: grid; */
+    display: flex;
+    justify-content: end;
+    margin-right: 2rem;
+}
+.h1{
+  padding: 10px;
+    padding-bottom: 20px;
+    font-size: 64px;
+    margin-left:20px;
+    color: white;
+    text-decoration: none;
+}
+a{
+    font-size: 20px;
+    margin: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+.submit:hover{
+    color:pink;
+}
+.login{
+    /* margin-top: 10px; */
+    display: flex;
+    align-items: center;
+}
+.cart{
+    margin-top: 5px;
+}
+
