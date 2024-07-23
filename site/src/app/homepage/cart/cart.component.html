@@ -1,0 +1,52 @@
+<!-- <app-navbar></app-navbar> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<body>
+    <div class="nav-container">
+      <div class="left-nav">
+        <a [routerLink]="['/homepage']">Shopfy</a>
+      </div>
+      <div class="right-nav">
+        <div class="login">
+          <a [routerLink]="['/cart']" id="cart-button"><i class="fa fa-shopping-cart" style="font-size:36px"></i></a>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <a [routerLink]="['/homepage']">Homepage</a>
+            <a [routerLink]="['/cart']">Cart</a>
+            <a [routerLink]="['/login']">Logout</a>
+          </div>
+        </div>
+        <div class="hamburger" id="hamburger-menu">
+          <i class="fa fa-bars" style="font-size:36px"></i>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <h2>Your Orders</h2>
+        <div *ngIf="orders.length === 0">
+          <p>You have no orders.</p>
+        </div>
+        <div *ngIf="orders.length > 0" class="order-list">
+          <div *ngFor="let order of orders" class="order-item">
+            <h3>Order ID: {{ order.order_id }}</h3>
+            <p>Item Name: {{ order.item_name }}</p>
+            <label for="quantity-{{order.item_id}}">Quantity:</label>
+            <input id="quantity-{{order.item_id}}" type="number" [(ngModel)]="order.selectedQuantity" min="1" [max]="order.item_quantity" (change)="updateOrderTotalPrice(order)">
+            <p>Price for each: Php{{ order.item_price }}</p>
+            <p>Total Price: Php{{ order.total_price }}</p>
+            <button class="btn cancel-btn" (click)="cancelAllOrder(order.order_id, order.total_price)">Cancel Order</button>
+            <button class="btn payout-btn" (click)="payout(order.order_id, order.total_price)">Payout</button>
+          </div>
+        </div>
+        <div *ngIf="orders.length > 0" class="total-price">
+          <h3>Total Price of All Orders: Php{{ totalOrderPrice }}</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { CartPageComponent } from './homepage/component/cart-page/cart-page.component';
+import { CartComponent } from './homepage/cart/cart.component';
 
 
 

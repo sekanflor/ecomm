@@ -146,7 +146,7 @@ button:hover {
 }
 
 .nav-container{
-    background-color: rgb(248, 188, 119);
+    background-color: #fabd6e;
     width: 100%;
     padding: 1rem 0 1.5rem 0;
     /* border-radius: 10px; */
@@ -163,14 +163,123 @@ button:hover {
     justify-content: end;
     margin-right: 2rem;
 }
+nav-container .left-nav a,
+.nav-container .right-nav a {
+  color: #fffefc;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-container .left-nav a {
+  font-size: 70px; /* Larger font size for title */
+  font-weight: bold; /* Bold text for title */
+}
+
+.nav-container .right-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between items */
+}
+
+.nav-container .cart-icon {
+  display: flex;
+  align-items: center;
+}
+
+.nav-container .dropdown {
+  position: relative;
+}
+
+.nav-container .dropdown .dropbtn {
+  background-color: #f58a0f; /* Match dropdown button color to container */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.nav-container .dropdown .dropbtn:hover {
+  background-color: #f58a0f; /* Slightly darker shade for hover effect */
+}
+
+.nav-container .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.nav-container .dropdown .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.nav-container .dropdown .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.nav-container .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-container .hamburger {
+  display: none; /* Hide hamburger by default */
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .nav-container .left-nav, .nav-container .right-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-container .right-nav {
+    display: none; /* Hide right nav items on small screens */
+    flex-direction: column;
+    width: 100%;
+  }
+  .nav-container .hamburger {
+    display: block; /* Show hamburger on small screens */
+    font-size: 36px;
+  }
+  #mobile-menu {
+    display: none; /* Hide mobile menu by default */
+    width: 100%;
+  }
+  #mobile-menu.show {
+    display: block; /* Show mobile menu when toggled */
+  }
+  .nav-container .dropdown .dropdown-content {
+    position: static;
+    width: 100%;
+  }
+  .nav-container .dropdown .dropbtn {
+    width: 100%;
+    text-align: left;
+  }
+}
 .h1{
   padding: 10px;
     padding-bottom: 20px;
-    font-size: 64px;
+    font-size: 84px;
     margin-left:20px;
     color: white;
     text-decoration: none;
 }
+
 a{
     font-size: 20px;
     margin: 10px;
