@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
   public orders: any = [];
   public totalOrderPrice: number = 0;
 
-
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
@@ -22,7 +21,7 @@ export class CartComponent implements OnInit {
   }
 
   retrieveOrders() {
-    this.http.get('http://localhost/shopfyAPI/shopfyAPI/api/order').subscribe(
+    this.http.get('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/orders').subscribe(
       (resp: any) => {
         console.log(resp);
         this.orders = resp.data.map((order: any) => ({
@@ -36,10 +35,12 @@ export class CartComponent implements OnInit {
         console.error('Error fetching orders:', error);
       }
     );
-  }
+}
+
+
 
   retrieveItems() {
-    this.http.get('http://localhost/shpfyAPI/shopfyAPI/api/items').subscribe(
+    this.http.get('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/items').subscribe(
       (resp: any) => {
         this.items = resp.data;
       },
@@ -49,50 +50,45 @@ export class CartComponent implements OnInit {
     );
   }
 
-  getItemsForOrder(itemId: number) {
-    return this.items.filter((item: any) => item.item_id === itemId);
-  }
-
-
   updateOrderTotalPrice(order: any) {
     order.total_price = order.selectedQuantity * order.item_price;
-    this.calculateTotalOrderPrice(); // Recalculate the total price of all orders
+    this.calculateTotalOrderPrice();
   }
 
   calculateTotalOrderPrice() {
     this.totalOrderPrice = this.orders.reduce((sum: number, order: any) => sum + order.total_price, 0);
   }
 
-  payout(orderId: number, totalPrice: number) {
-    const data = { orderId: orderId };
+  payout(order: any) {
+    const data = { orderId: order.order_id };
 
-    this.http.post(`http://localhost/shopfyAPI/shopfy/api/pay_order`, data).subscribe(
+    this.http.post('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/pay_order', data).subscribe(
       (response: any) => {
         console.log('Paid out:', response);
         this._snackBar.open('Wait for Order to Arrive :>', 'close', {
           duration: 3000
         });
-        this.orders = this.orders.filter((order: { order_id: number }) => order.order_id !== orderId);
-        this.calculateTotalOrderPrice(); // Update total price after payout
+        this.orders = this.orders.filter((o: any) => o.order_id !== order.order_id);
+        this.calculateTotalOrderPrice();
       },
       (error) => {
         console.error('Error payout order:', error);
-        alert('There was an error payout the order.');
+        alert('There was an error paying out the order.');
       }
     );
   }
 
-  cancelAllOrder(orderId: number, totalPrice: number) {
-    const data = { orderId: orderId };
+  cancelAllOrder(order: any) {
+    const data = { orderId: order.order_id };
 
-    this.http.post(`http://localhost/shopfyAPI/shopfyAPI/api/delete_order`, data).subscribe(
+    this.http.post('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/delete_order', data).subscribe(
       (response: any) => {
         console.log('Order cancelled successfully:', response);
         this._snackBar.open('Order has been Cancelled :>', 'close', {
           duration: 3000
         });
-        this.orders = this.orders.filter((order: { order_id: number }) => order.order_id !== orderId);
-        this.calculateTotalOrderPrice(); // Update total price after cancellation
+        this.orders = this.orders.filter((o: any) => o.order_id !== order.order_id);
+        this.calculateTotalOrderPrice();
       },
       (error) => {
         console.error('Error cancelling order:', error);

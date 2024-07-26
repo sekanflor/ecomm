@@ -15,9 +15,12 @@ body {
   min-height: 90vh;
   min-width: 98.3%;
 }
-
+.prod-container,h1{
+  text-align: center;
+}
 .container {
   padding: 20px;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .cart-list {

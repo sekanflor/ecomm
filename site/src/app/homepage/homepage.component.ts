@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   }
 
   retrieveItems() {
-    this.http.get('http://localhost/shopfyAPI/shopfyAPI/api/items').subscribe(
+    this.http.get('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/items').subscribe(
       (resp: any) => {
         this.items = resp.data;
         this.filterItems();
