@@ -34,7 +34,7 @@
     <div class="content">
       <h2>Your Orders</h2>
       <div *ngIf="orders.length === 0">
-        <p>You have no orders.</p>
+        <p>You have no orders in the moment.</p>
       </div>
       <div *ngIf="orders.length > 0" class="order-list">
         <div *ngFor="let order of orders" class="order-item">
@@ -44,7 +44,7 @@
           <input id="quantity-{{order.item_id}}" type="number" [(ngModel)]="order.selectedQuantity" min="1" [max]="order.item_quantity" (change)="updateOrderTotalPrice(order)">
           <p>Price for each: Php{{ order.item_price }}</p>
           <p>Total Price: Php{{ order.total_price }}</p>
-          <button class="btn cancel-btn" (click)="cancelAllOrder(order)">Cancel Order</button>
+          <button class="btn cancel-btn" (click)="cancelAllOrder(order)">Cancel Order</button><i>&nbsp;</i>
           <button class="btn payout-btn" (click)="payout(order)">Payout</button>
         </div>
       </div>

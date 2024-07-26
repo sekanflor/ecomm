@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   public orders: any = [];
   public totalOrderPrice: number = 0;
 
-  constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.retrieveOrders();
@@ -35,9 +35,7 @@ export class CartComponent implements OnInit {
         console.error('Error fetching orders:', error);
       }
     );
-}
-
-
+  }
 
   retrieveItems() {
     this.http.get('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/items').subscribe(
@@ -65,15 +63,13 @@ export class CartComponent implements OnInit {
     this.http.post('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/pay_order', data).subscribe(
       (response: any) => {
         console.log('Paid out:', response);
-        this._snackBar.open('Wait for Order to Arrive :>', 'close', {
-          duration: 3000
-        });
+        Swal.fire('Success', 'Wait for Order to Arrive :>', 'success');
         this.orders = this.orders.filter((o: any) => o.order_id !== order.order_id);
         this.calculateTotalOrderPrice();
       },
       (error) => {
         console.error('Error payout order:', error);
-        alert('There was an error paying out the order.');
+        Swal.fire('Error', 'There was an error paying out the order.', 'error');
       }
     );
   }
@@ -84,15 +80,13 @@ export class CartComponent implements OnInit {
     this.http.post('http://localhost/ecomm_api/ecomm_api/shopfyAPI/api/delete_order', data).subscribe(
       (response: any) => {
         console.log('Order cancelled successfully:', response);
-        this._snackBar.open('Order has been Cancelled :>', 'close', {
-          duration: 3000
-        });
+        Swal.fire('Cancelled', 'Order has been Cancelled :>', 'success');
         this.orders = this.orders.filter((o: any) => o.order_id !== order.order_id);
         this.calculateTotalOrderPrice();
       },
       (error) => {
         console.error('Error cancelling order:', error);
-        alert('There was an error cancelling the order.');
+        Swal.fire('Error', 'There was an error cancelling the order.', 'error');
       }
     );
   }
