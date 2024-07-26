@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   public filteredItems: any[] = [];
   public selectedItem: any = null;
   selectedPriceRange = 'all';
+  searchQuery: string = '';
   private autoScrollInterval: any;
 
   constructor(private http: HttpClient, private router: Router, private renderer: Renderer2) {}
@@ -54,6 +55,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
         break;
     }
   }
+
 
   previewItem(item: any) {
     this.selectedItem = item;

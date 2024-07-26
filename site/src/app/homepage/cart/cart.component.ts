@@ -9,14 +9,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+  public items: any = [];
   public orders: any = [];
   public totalOrderPrice: number = 0;
+
 
   constructor(private http: HttpClient, private router: Router, private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.retrieveOrders();
+    this.retrieveItems();
   }
 
   retrieveOrders() {
@@ -35,6 +37,22 @@ export class CartComponent implements OnInit {
       }
     );
   }
+
+  retrieveItems() {
+    this.http.get('http://localhost/shpfyAPI/shopfyAPI/api/items').subscribe(
+      (resp: any) => {
+        this.items = resp.data;
+      },
+      (error) => {
+        console.error('Error fetching items:', error);
+      }
+    );
+  }
+
+  getItemsForOrder(itemId: number) {
+    return this.items.filter((item: any) => item.item_id === itemId);
+  }
+
 
   updateOrderTotalPrice(order: any) {
     order.total_price = order.selectedQuantity * order.item_price;
