@@ -177,7 +177,7 @@ button:hover {
     grid-template-columns: 50% 50%;
 }
 .right-nav{
-    /* position: absolute; */
+     position: right;
     /* top: 12px; */
     /* right: 30px; */
     /* flex-direction: grid; */

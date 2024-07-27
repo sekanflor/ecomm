@@ -6,24 +6,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Shopfy Cart</title>
 </head>
 <body>
   <div class="nav-container">
     <div class="left-nav">
-      <a class="h1"[routerLink]="['/homepage']"><img class="icon" src="assets/iconecomm.png" alt="">Shopfy</a>
+      <a class="h1" [routerLink]="['/homepage']"><img class="icon" src="assets/iconecomm.png" alt="">Shopfy</a>
     </div>
     <div class="right-nav">
       <div class="login">
-        <a [routerLink]="['/cart']" id="cart-button"><i class="fa fa-shopping-cart" style="font-size:36px"></i></a>
       </div>
       <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-          <a [routerLink]="['/homepage']">Homepage</a>
-          <a [routerLink]="['/cart']">Cart</a>
-          <a [routerLink]="['/login']">Logout</a>
-        </div>
+        <a [routerLink]="['/homepage']"><i class="fa fa-home" style="font-size:36px"></i></a>
+        <a [routerLink]="['/login']"><i class="fa fa-sign-out" style="font-size:36px"></i></a>
       </div>
       <div class="hamburger" id="hamburger-menu">
         <i class="fa fa-bars" style="font-size:36px"></i>

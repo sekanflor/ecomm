@@ -7,20 +7,23 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+  font-family: "sofia-pro-soft";
 }
 
 .body-background {
   display: flex;
-  float: left;
+  justify-content: center; /* Center the register container horizontally */
+  align-items: center; /* Center the register container vertically */
   width: 100vw;
   height: 103vh;
   background: linear-gradient(to bottom, #EE6C25 0, #FFB853 100%);
-  align-items: center;
 }
 
 h2 {
   text-align: center;
   color: #fff;
+  font-family: "sofia-pro-soft";
+  font-size: 30px;
 }
 
 div {
@@ -46,8 +49,24 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "sofia-pro-soft";
+  font-size: 16px;
 }
 
 button:hover {
   background-color: #E98737;
+}
+
+.login-redirect {
+  display: block;
+  text-align: center; /* Center the text */
+  margin-top: 20px; /* Add some space above the link */
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login-redirect:hover {
+  text-decoration: underline;
 }
