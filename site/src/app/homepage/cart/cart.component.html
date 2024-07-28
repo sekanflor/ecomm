@@ -34,18 +34,19 @@
       </div>
       <div *ngIf="orders.length > 0" class="order-list">
         <div *ngFor="let order of orders" class="order-item">
-          <h3>Order ID: {{ order.order_id }}</h3>
-          <p>Item Name: {{ order.item_name }}</p>
-          <label for="quantity-{{order.item_id}}">Quantity:</label>
-          <input id="quantity-{{order.item_id}}" type="number" [(ngModel)]="order.selectedQuantity" min="1" [max]="order.item_quantity" (change)="updateOrderTotalPrice(order)">
-          <p>Price for each: Php{{ order.item_price }}</p>
-          <p>Total Price: Php{{ order.total_price }}</p>
-          <button class="btn cancel-btn" (click)="cancelAllOrder(order)">Cancel Order</button><i>&nbsp;</i>
-          <button class="btn payout-btn" (click)="payout(order)">Payout</button>
+          <div class="order-details">
+            <h3>Order ID: {{ order.order_id }}</h3>
+            <p>Item Name: {{ order.item_name }}</p>
+            <label for="quantity-{{order.item_id}}">Quantity:</label>
+            <input id="quantity-{{order.item_id}}" type="number" [(ngModel)]="order.selectedQuantity" min="1" [max]="order.item_quantity" (change)="updateOrderTotalPrice(order)">
+            <p>Price for each: Php{{ order.item_price }}</p>
+            <p>Total Price: Php{{ order.total_price }}</p>
+            <div class="button-group">
+              <button class="btn cancel-btn" (click)="cancelAllOrder(order)">Cancel Order</button><i>&nbsp;</i>
+              <button class="btn payout-btn" (click)="payout(order)">Payout</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div *ngIf="orders.length > 0" class="total-price">
-        <h3>Total Price of All Orders: Php{{ totalOrderPrice }}</h3>
       </div>
     </div>
   </div>
